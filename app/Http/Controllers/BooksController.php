@@ -114,6 +114,8 @@ class Form {
               $value = inputType($key);
               if($this->table && $this->table->{$item}) $value = $this->table->{$item};
               // if($key == 'text' && is_string($value)) $value = ucwords($value);
+              if($key == 'number' && is_numeric($value)) $value = number_format(intval($value));
+
 
               $input = new FormInputs($key,$item,$item,$title,$value);
               array_push($this->inputs,$input);
@@ -169,9 +171,12 @@ class TableList {
       $item = [];
 
       if(count($this->columns) > 0) {
-        foreach($this->columns as $column) {
-          if(!in_array($column,$this->excludes)) 
-            array_push($item,$prop[$column]);
+        foreach($this->columns as $key => $column) {
+          if(!in_array($column,$this->excludes)) {
+            $value = $prop[$column];
+            if(is_numeric($value)) $value = number_format(intval($value));
+            array_push($item,$value);
+          }
         }
       }
 
