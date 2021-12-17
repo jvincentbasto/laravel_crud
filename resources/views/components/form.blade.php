@@ -8,23 +8,22 @@
   @endif
 
     @csrf
-
     @if($form && ['inputs'] && count($form['inputs']) > 0)
       @foreach($form['inputs'] as $input)
         @if($input->type == 'text')
           <div class="mb-4">
             <label class="font-bold text-zinc-800" for="{{ $input->id }}">{{ $input->title }}:</label>
-            <input class="w-full h-10 py-4 px-3 border-2 border-zinc-300 rounded text-zinc-600 text-sm focus:outline-none focus:border-zinc-400" id="{{ $input->id }}" name="{{ $input->name }}" value="{{ old($input->title, $input->value) }}">
+            <input class="w-full h-10 py-4 px-3 border-2 border-zinc-300 rounded text-zinc-600 text-sm focus:outline-none focus:border-zinc-400" id="{{ $input->id }}" name="{{ $input->name }}" value="{{ old('', $input->value) }}">
           </div>
         @elseif($input->type == 'number')
           <div class="mb-4">
             <label class="font-bold text-zinc-800" for="{{ $input->id }}">{{ $input->title }}:</label>
-            <input type="number" class="w-full h-10 py-4 px-3 border-2 border-zinc-300 rounded text-zinc-600 text-sm focus:outline-none focus:border-zinc-400" id="{{ $input->id }}" name="{{ $input->name }}" min="0" value="{{ old($input->title, $input->value) }}">
+            <input type="number" class="w-full h-10 py-4 px-3 border-2 border-zinc-300 rounded text-zinc-600 text-sm focus:outline-none focus:border-zinc-400" id="{{ $input->id }}" name="{{ $input->name }}" min="0" value="{{ old(0, $input->value) }}">
           </div>
         @elseif($input->type == 'date')
           <div class="mb-4">
             <label class="font-bold text-zinc-800" for="{{ $input->id }}">{{ $input->title }}:</label>
-            <input type="date" class="w-full h-10 py-4 px-3 border-2 border-zinc-300 rounded text-zinc-600 text-sm focus:outline-none focus:border-zinc-400" id="{{ $input->id }}" name="{{ $input->name }}" value="{{ old($input->title, $input->value) }}">
+            <input type="date" class="w-full h-10 py-4 px-3 border-2 border-zinc-300 rounded text-zinc-600 text-sm focus:outline-none focus:border-zinc-400" id="{{ $input->id }}" name="{{ $input->name }}" value="{{ old(date('Y_m_d'), $input->value) }}">
           </div>
         @endif
       @endforeach

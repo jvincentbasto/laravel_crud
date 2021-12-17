@@ -114,7 +114,7 @@ class Form {
               $value = inputType($key);
               if($this->table && $this->table->{$item}) $value = $this->table->{$item};
               // if($key == 'text' && is_string($value)) $value = ucwords($value);
-              if($key == 'number' && is_numeric($value)) $value = number_format(intval($value));
+              // if($key == 'number' && is_numeric($value)) $value = number_format(intval($value));
 
 
               $input = new FormInputs($key,$item,$item,$title,$value);
@@ -308,6 +308,7 @@ class BooksController extends Controller
 
   public function update(Book $book)
   {
+    
     $price = intval(request('price'));
     request()->validate([
       'title' => 'required|string',
