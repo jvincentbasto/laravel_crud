@@ -98,7 +98,7 @@
     @endif
   </table>
 
-  <div class="mt-12">
+  <div class="mt-12 mb-16">
     @if($list && $list['pages']) 
       @if($querylink) 
         {{ $list['pages']->withQueryString()->links() }}
@@ -128,6 +128,11 @@
   }
   th {
     padding: 15px;
+  }
+  td {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   tr:nth-child(even) {

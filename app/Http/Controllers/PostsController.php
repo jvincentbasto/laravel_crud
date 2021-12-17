@@ -225,7 +225,7 @@ class PostsController extends Controller
       return $this->search($columns,$filters,$settings);
     }
     else {
-      $posts = Post::orderBy($sort,$order)->paginate(5);
+      $posts = Post::orderBy($sort,$order)->paginate(10);
       $pages = $posts;
 
       $table = new Post;
@@ -332,7 +332,7 @@ class PostsController extends Controller
         }
       })
       ->orderBy('created_at','desc')
-      ->paginate(5);
+      ->paginate(10);
       // ->get()->sortByDesc('created_at');
     $list = $posts;
     $querylink = true;

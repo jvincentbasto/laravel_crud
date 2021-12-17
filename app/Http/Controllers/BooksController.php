@@ -227,7 +227,7 @@ class BooksController extends Controller
       return $this->search($columns,$filters,$settings);
     }
     else {
-      $books = Book::orderBy($sort,$order)->paginate(5);
+      $books = Book::orderBy($sort,$order)->paginate(10);
       $pages = $books;
 
       $table = new Book;
@@ -349,7 +349,7 @@ class BooksController extends Controller
         }
       })
       ->orderBy('created_at','desc')
-      ->paginate(5);
+      ->paginate(10);
       // ->get()->sortByDesc('created_at');
     $list = $books;
     $querylink = true;
